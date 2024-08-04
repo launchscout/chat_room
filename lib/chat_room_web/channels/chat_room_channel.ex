@@ -2,15 +2,22 @@ defmodule ChatRoomWeb.ChatRoomChannel do
   @moduledoc false
 
   use LiveState.Channel, web_module: ChatRoomWeb
+  alias Phoenix.PubSub
 
   @impl true
-  def init(_channel, _params, _socket) do
-    {:ok, %{}}
+  def init("chat_room:" <> room, _params, _socket) do
+    PubSub.subscribe(ChatRoom.PubSub, "chat_room:#{room}")
+    {:ok, %{messages: [], room: room}}
   end
 
   @impl true
-  def handle_event("do_something", _payload, state) do
-    {:noreply, Map.put(state, :foo, "bar")}
+  def handle_event("send_message", message, state) do
+    PubSub.broadcast!(ChatRoom.PubSub, "chat_room:#{room}", message)
+    {:noreply, state}
+  end
+
+  def handle_message(message, %{messages: messages} = state) do
+    {:noreply, state |> Map.put(:messages, [message | messages])}
   end
 
 end
