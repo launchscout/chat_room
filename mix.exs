@@ -55,7 +55,7 @@ defmodule ChatRoom.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.2"},
-      {:live_state, ">= 0.0.0"}
+      {:live_state, ">= 0.0.0", path: "../live_state"}
     ]
   end
 

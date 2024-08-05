@@ -6,13 +6,13 @@ defmodule ChatRoomWeb.ChatRoomChannel do
 
   @impl true
   def init("chat_room:" <> room, _params, _socket) do
-    PubSub.subscribe(ChatRoom.PubSub, "chat_room:#{room}")
+    PubSub.subscribe(ChatRoom.PubSub, "chat_messages:#{room}")
     {:ok, %{messages: [], room: room}}
   end
 
   @impl true
-  def handle_event("send_message", message, state) do
-    PubSub.broadcast!(ChatRoom.PubSub, "chat_room:#{room}", message)
+  def handle_event("send_message", message, %{room: room} = state) do
+    PubSub.broadcast!(ChatRoom.PubSub, "chat_messages:#{room}", message)
     {:noreply, state}
   end
 
