@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/chat-room",
+  "version": "0.1.0",
+  "title": "Chat Room",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "Example block scaffolded with Create Block tool.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "textdomain": "chat-room",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js",
+  "attributes": {
+    "url": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "chat-room",
+      "attribute": "url",
+      "default": ""
+    },
+    "room": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "chat-room",
+      "attribute": "room",
+      "default": ""
+    }
+  }
+}

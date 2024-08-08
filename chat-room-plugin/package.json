@@ -1,0 +1,26 @@
+{
+	"name": "chat-room",
+	"version": "0.1.0",
+	"description": "Example block scaffolded with Create Block tool.",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "cp ../assets/js/chat-room.js src/ && wp-scripts build",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start"
+	},
+	"devDependencies": {
+		"@babel/plugin-syntax-jsx": "^7.24.7",
+		"@wordpress/scripts": "^27.9.0"
+	},
+	"dependencies": {
+		"@babel/plugin-proposal-decorators": "^7.24.7",
+		"lit": "^3.2.0",
+		"phx-live-state": "file:/Users/superchris/dev/phx-live-state"
+	}
+}
